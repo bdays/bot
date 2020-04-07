@@ -31,10 +31,7 @@ function edit(view, channelId, userId, recordId) {
         response_action: 'clear',
       });
 
-    dbApp.feedback
-      .edit(recordId, userId, titleValue, urlValue, reviewValue, tagsValues)
-      .then(response)
-      .catch(response);
+    dbApp.feedback.edit(recordId, userId, titleValue, urlValue, reviewValue, tagsValues).then(response).catch(response);
   });
 }
 

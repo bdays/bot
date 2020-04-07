@@ -3,7 +3,7 @@ const uiBlocks = require('../../uiBlocks');
 const client = require('../../client');
 const router = express.Router();
 
-router.post('/weather', function(req, res) {
+router.post('/weather', function (req, res) {
   client.permission
     .checkAccess(req.body.channel_id, req.body.user_id)
     .then(() => {
@@ -13,7 +13,7 @@ router.post('/weather', function(req, res) {
     .catch((blocks) => res.json({ blocks }));
 });
 
-router.post('/admin', function(req, res) {
+router.post('/admin', function (req, res) {
   client.permission
     .checkAccess(req.body.channel_id, req.body.user_id)
     .then(() => {
@@ -22,7 +22,7 @@ router.post('/admin', function(req, res) {
     .catch((blocks) => res.json({ blocks }));
 });
 
-router.post('/tag_add', function(req, res) {
+router.post('/tag_add', function (req, res) {
   client.permission
     .checkAccess(req.body.channel_id, req.body.user_id)
     .then(() => {

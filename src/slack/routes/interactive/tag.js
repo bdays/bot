@@ -5,10 +5,7 @@ const api = require('../../api');
 function add(view, channelId, userId) {
   const tagValue = view.state.values.tagName.actionTagName.value || '';
 
-  const completeTagName = tagValue
-    .toLowerCase()
-    .replace(/[\s]+/gm, ' ')
-    .trim();
+  const completeTagName = tagValue.toLowerCase().replace(/[\s]+/gm, ' ').trim();
 
   dbApp.feedbackTags
     .add(completeTagName)

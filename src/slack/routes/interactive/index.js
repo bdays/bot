@@ -10,7 +10,7 @@ const dbApp = require('../../../db');
 const client = require('../../client');
 const router = express.Router();
 
-router.post('/select', function(req, res) {
+router.post('/select', function (req, res) {
   if (req && req.body && req.body.payload) {
     const payload = JSON.parse(req.body.payload);
 
@@ -39,7 +39,7 @@ router.post('/select', function(req, res) {
   }
 });
 
-router.post('/', function(req, res) {
+router.post('/', function (req, res) {
   if (req.body) {
     if (req.body.challenge) {
       res.json({ challenge: req.body.challenge });

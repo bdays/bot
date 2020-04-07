@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {},
   );
-  Slack_Ventillation.associate = function(models) {
+  Slack_Ventillation.associate = function (models) {
     // associations can be defined here
   };
   return Slack_Ventillation;

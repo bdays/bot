@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "NODE_ENV=production node src/index.js",
     "start:dev": "DEBUG=true node src/index.js",
     "test": "jest --collect-coverage",
     "test:watch": "jest --collect-coverage --watchAll",
     "prettier": "prettier --write \"src/**/*.js*\"",
     "db:migrate": "sequelize-cli db:migrate",
-    "db:seed": "sequelize-cli db:seed:all --debug"
+    "db:seed": "sequelize-cli db:seed:all --debug",
+    "heroku": "NODE_ENV=production DEBUG=true node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,9 @@
     "express": "^4.17.1",
     "log4js": "^6.1.2",
     "sequelize": "^5.21.5",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^4.1.1",
+    "sequelize-cli": "^5.5.1",
+    "pg": "^8.0.0"
   },
   "devDependencies": {
     "jest": "^25.1.0",

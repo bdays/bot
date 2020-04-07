@@ -3,7 +3,7 @@ const uiBlocks = require('../../uiBlocks');
 const client = require('../../client');
 const router = express.Router();
 
-router.post('/add', function(req, res) {
+router.post('/add', function (req, res) {
   client.permission
     .checkAccess(req.body.channel_id, req.body.user_id)
     .then(() => {
@@ -13,7 +13,7 @@ router.post('/add', function(req, res) {
     .catch((blocks) => res.json({ blocks }));
 });
 
-router.post('/schedule', function(req, res) {
+router.post('/schedule', function (req, res) {
   uiBlocks.ventillation.list(req.body.channel_id, req.body.user_id).then((blocks) => res.json({ blocks }));
 });
 

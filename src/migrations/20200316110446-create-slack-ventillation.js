@@ -15,13 +15,13 @@ module.exports = {
         type: Sequelize.STRING,
       },
       time_hour: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       time_minute: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       duration_minute: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       week_day_monday: {
         type: Sequelize.BOOLEAN,

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {},
   );
-  Slack_Admins.associate = function(models) {
+  Slack_Admins.associate = function (models) {
     // associations can be defined here
   };
   return Slack_Admins;

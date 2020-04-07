@@ -4,7 +4,7 @@ const db = require('../../db');
 const router = express.Router();
 const api = require('../../api');
 
-router.post('/', function(req, res) {
+router.post('/', function (req, res) {
   db.channels.getWeatherCity(req.body.channel_id).then((weather_city) =>
     uiBlocks.weather
       .get(weather_city)

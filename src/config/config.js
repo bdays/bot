@@ -12,8 +12,8 @@ module.exports = {
     logging: env.isDebug(),
   },
   production: {
-    dialect: 'sqlite',
-    storage: 'dbs/app_database.sqlite3',
+    use_env_variable: process.env.DATABASE_URL,
+    dialect: 'postgres',
     logging: env.isDebug(),
   },
 };

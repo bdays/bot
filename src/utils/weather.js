@@ -14,7 +14,7 @@ function get(cityName = '') {
   };
 
   return new Promise((resolve, reject) => {
-    request(options, function(error, response) {
+    request(options, function (error, response) {
       if (error) reject(error);
       const data = (response && response.body && JSON.parse(response.body)) || {};
       if (data && data.cod) {

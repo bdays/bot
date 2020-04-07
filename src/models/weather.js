@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {},
   );
-  Weather.associate = function(models) {
+  Weather.associate = function (models) {
     // associations can be defined here
   };
   return Weather;

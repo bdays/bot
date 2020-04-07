@@ -15,7 +15,7 @@ function startServer() {
 
   app.use('/system', routes.system);
 
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     if (req.query.secret && req.query.secret === env.getSlackEventServerSecret()) {
       next();
     } else {

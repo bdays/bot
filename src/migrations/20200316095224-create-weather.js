@@ -12,22 +12,22 @@ module.exports = {
         type: Sequelize.STRING,
       },
       temp: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       temp_feels_like: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       wind_speed: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       wind_deg: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       dt: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       last_update: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
