@@ -6,31 +6,21 @@ function manageList(channel_id, admin_id) {
     const blocks = [
       uiItems.text.markdownSection('*Управление администраторами*'),
       uiItems.text.markdownSection('Для добавления нажмите на кнопку: ', {
-        accessory: {
-          type: 'button',
-          action_id: `add_administrator_privileges:${channel_id}`,
-          text: {
-            type: 'plain_text',
-            text: 'Добавить администратора',
+        accessory: uiItems.actions.button(
+          'Добавить администратора',
+          'add',
+          `add_administrator_privileges:${channel_id}`,
+          {
+            style: 'primary',
           },
-          style: 'primary',
-          value: 'add',
-        },
+        ),
       }),
     ];
 
     Promise.all([db.admins.list(channel_id), db.channels.getAdminId(channel_id)]).then((values) => {
       const [admins, channelCreator] = values;
 
-      blocks.push({
-        type: 'context',
-        elements: [
-          {
-            type: 'mrkdwn',
-            text: `В канале сейчас назначено (${admins.length}):`,
-          },
-        ],
-      });
+      blocks.push(uiItems.text.markdownContextList([`В канале сейчас назначено (${admins.length}):`]));
 
       admins.forEach((currentAdminId, i) => {
         if (currentAdminId === admin_id) {
@@ -76,22 +66,13 @@ function addModal(channelId, webhookUrl) {
     'Добавить администратора',
     `modal-add-administrator-privileges:${channelId}`,
     [
-      {
-        block_id: `user_select`,
-        type: 'input',
-        element: {
-          action_id: `add_administrator_privileges:::${webhookUrl}`,
-          type: 'users_select',
-          placeholder: {
-            type: 'plain_text',
-            text: 'Выберите пользователя',
-          },
-        },
-        label: {
-          type: 'plain_text',
-          text: 'Пользователь',
-        },
-      },
+      new actions.Input()
+        .setType('users_select')
+        .setBlockId('user_select')
+        .setActionId(`add_administrator_privileges:::${webhookUrl}`)
+        .setPlaceholder('Выберите пользователя')
+        .setLabel('Пользователь')
+        .get(),
     ],
     {},
     'Добавить',

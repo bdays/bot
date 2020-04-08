@@ -8,7 +8,7 @@ function divider() {
 
 function confirm(title, text, confirm = 'Да', deny = 'Стоп! Я передумал!') {
   if (!title || !text) {
-    console.error('In Confirm required fields: title, text');
+    console.warn('In Confirm required fields: title, text');
     return {};
   }
 

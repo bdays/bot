@@ -1,6 +1,6 @@
 function markdownSection(text = '', args = {}) {
   if (!text) {
-    console.error('In Text markdownSection required field: text');
+    console.warn('In Text markdownSection string type required');
     return {};
   }
 
@@ -16,7 +16,7 @@ function markdownSection(text = '', args = {}) {
 
 function markdownContext(text = '', args = {}) {
   if (!text) {
-    console.error('In Text markdownContext required field: text');
+    console.warn('In Text markdownContext string type required');
     return {};
   }
 
@@ -30,4 +30,20 @@ function markdownContext(text = '', args = {}) {
   };
 }
 
-module.exports = { markdownSection, markdownContext };
+function markdownContextList(list = [], args = {}) {
+  if (!list || !list.length || !Array.isArray(list)) {
+    console.warn('list must be an array of strings');
+    return {};
+  }
+
+  return {
+    type: 'context',
+    elements: list.map((text) => ({
+      type: 'mrkdwn',
+      text: text,
+    })),
+    ...args,
+  };
+}
+
+module.exports = { markdownSection, markdownContext, markdownContextList };
