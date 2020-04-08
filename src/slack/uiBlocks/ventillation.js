@@ -205,7 +205,7 @@ function addModal(channelId) {
       .get(),
   ]);
 
-  console.log(JSON.stringify(obj, null, '\t'));
+  console.log(JSON.stringify(obj));
 
   return obj;
 }
