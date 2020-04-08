@@ -164,128 +164,45 @@ function addModal(channelId) {
         },
       ],
     },
-
     new uiItems.actions.Input('multi_static_select')
       .setBlockId('weekDays')
       .setPlaceholder('Выберите дни недели')
       .setActionId('actionWeekDays')
       .setLabel('Дни недели')
-      .setOptions(
-        days.map(({ value, label }) => ({
-          value,
-          label,
-        })),
-      )
+      .setOptions(days)
       .get(),
-
-    {
-      type: 'input',
-      block_id: 'timeHour',
-      element: {
-        type: 'static_select',
-        placeholder: {
-          type: 'plain_text',
-          text: 'Выберите час',
-        },
-        action_id: 'actionTimeHour',
-        options: hours.map((item) => ({
-          text: {
-            type: 'plain_text',
-            text: item.label,
-          },
-          value: item.value,
-        })),
-      },
-      label: {
-        type: 'plain_text',
-        text: 'Часы',
-      },
-    },
-    {
-      type: 'input',
-      block_id: 'timeMinute',
-      element: {
-        type: 'static_select',
-        placeholder: {
-          type: 'plain_text',
-          text: 'Выберите минуты',
-        },
-        action_id: 'actionTimeMinute',
-        options: minutes.map((item) => ({
-          text: {
-            type: 'plain_text',
-            text: item.label,
-          },
-          value: item.value,
-        })),
-      },
-      label: {
-        type: 'plain_text',
-        text: 'Минуты',
-      },
-    },
-    {
-      type: 'input',
-      block_id: 'durationMinute',
-      element: {
-        type: 'static_select',
-        placeholder: {
-          type: 'plain_text',
-          text: 'Выберите минуты',
-        },
-        action_id: 'actionDurationMinute',
-        options: durationMinutes.map((item) => ({
-          text: {
-            type: 'plain_text',
-            text: item.label,
-          },
-          value: item.value,
-        })),
-      },
-      label: {
-        type: 'plain_text',
-        text: 'Продолжительность',
-      },
-    },
-    {
-      type: 'input',
-      block_id: 'notification',
-      element: {
-        type: 'static_select',
-        placeholder: {
-          type: 'plain_text',
-          text: 'Выберите тип уведомления',
-        },
-        action_id: 'actionNotification',
-        options: [
-          {
-            text: {
-              type: 'plain_text',
-              text: 'Простое сообщение',
-            },
-            value: 'simple',
-          },
-          {
-            text: {
-              type: 'plain_text',
-              text: '@here',
-            },
-            value: 'here',
-          },
-          {
-            text: {
-              type: 'plain_text',
-              text: '@channel',
-            },
-            value: 'channel',
-          },
-        ],
-      },
-      label: {
-        type: 'plain_text',
-        text: 'Уведомление',
-      },
-    },
+    new uiItems.actions.Input('static_select')
+      .setBlockId('timeHour')
+      .setPlaceholder('Выберите час')
+      .setActionId('actionTimeHour')
+      .setLabel('Часы')
+      .setOptions(hours)
+      .get(),
+    new uiItems.actions.Input('static_select')
+      .setBlockId('timeMinute')
+      .setPlaceholder('Выберите минуты')
+      .setActionId('actionTimeMinute')
+      .setLabel('Минуты')
+      .setOptions(minutes)
+      .get(),
+    new uiItems.actions.Input('static_select')
+      .setBlockId('durationMinute')
+      .setPlaceholder('Выберите минуты')
+      .setActionId('actionDurationMinute')
+      .setLabel('Продолжительность')
+      .setOptions(durationMinutes)
+      .get(),
+    new uiItems.actions.Input('static_select')
+      .setBlockId('notification')
+      .setPlaceholder('Выберите тип уведомления')
+      .setActionId('actionNotification')
+      .setLabel('Уведомление')
+      .setOptions([
+        { text: 'Простое сообщение', value: 'simple' },
+        { text: '@here', value: 'here' },
+        { text: '@channel', value: 'channel' },
+      ])
+      .get(),
   ]);
 }
 
