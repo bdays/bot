@@ -123,6 +123,16 @@ function dublicateSchedule() {
   return [uiItems.text.markdownSection('*Ошибка добавления расписания!* Такое проветривание уже существует.')];
 }
 
+const days = [
+  { label: 'Пн', value: 'monday' },
+  { label: 'Вт', value: 'tuesday' },
+  { label: 'Ср', value: 'wednesday' },
+  { label: 'Чт', value: 'thursday' },
+  { label: 'Пт', value: 'friday' },
+  { label: 'Сб', value: 'saturday' },
+  { label: 'Вс', value: 'sunday' },
+];
+
 const hours = [];
 
 for (let index = 0; index < 24; index++) {
@@ -144,17 +154,7 @@ for (let index = 1; index <= 12; index++) {
 }
 
 function addModal(channelId) {
-  const days = [
-    { label: 'Пн', value: 'monday' },
-    { label: 'Вт', value: 'tuesday' },
-    { label: 'Ср', value: 'wednesday' },
-    { label: 'Чт', value: 'thursday' },
-    { label: 'Пт', value: 'friday' },
-    { label: 'Сб', value: 'saturday' },
-    { label: 'Вс', value: 'sunday' },
-  ];
-
-  return uiItems.modal.create('Добавление проветривания', `modal-ventillation-add:${channelId}`, [
+  const obj = uiItems.modal.create('Добавление проветривания', `modal-ventillation-add:${channelId}`, [
     {
       type: 'context',
       elements: [
@@ -204,6 +204,10 @@ function addModal(channelId) {
       ])
       .get(),
   ]);
+
+  console.log(JSON.stringify(obj, null, '\t'));
+
+  return obj;
 }
 
 module.exports = { addModal, successAdded, dublicateSchedule, list, typesNotification, typesWeekDays };
