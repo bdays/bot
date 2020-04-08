@@ -1,0 +1,523 @@
+{
+  "type": "modal",
+  "callback_id": "modal-ventillation-add:CUL32BQR4",
+  "title": {
+    "type": "plain_text",
+    "text": "Добавление проветривания"
+  },
+  "submit": {
+    "type": "plain_text",
+    "text": "Сохранить"
+  },
+  "close": {
+    "type": "plain_text",
+    "text": "Отмена"
+  },
+  "blocks": [
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "Указывайте время в GMT"
+        }
+      ]
+    },
+    {
+      "type": "input",
+      "element": {
+        "type": "multi_static_select",
+        "placeholder": {
+          "type": "plain_text",
+          "text": "Выберите дни недели"
+        },
+        "action_id": "actionWeekDays",
+        "options": [
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "Пн"
+            },
+            "value": "monday"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "Вт"
+            },
+            "value": "tuesday"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "Ср"
+            },
+            "value": "wednesday"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "Чт"
+            },
+            "value": "thursday"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "Пт"
+            },
+            "value": "friday"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "Сб"
+            },
+            "value": "saturday"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "Вс"
+            },
+            "value": "sunday"
+          }
+        ]
+      },
+      "label": {
+        "type": "plain_text",
+        "text": "Дни недели"
+      },
+      "block_id": "weekDays"
+    },
+    {
+      "type": "input",
+      "element": {
+        "type": "static_select",
+        "placeholder": {
+          "type": "plain_text",
+          "text": "Выберите час"
+        },
+        "action_id": "actionTimeHour",
+        "options": [
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "00"
+            },
+            "value": "0"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "01"
+            },
+            "value": "1"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "02"
+            },
+            "value": "2"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "03"
+            },
+            "value": "3"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "04"
+            },
+            "value": "4"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "05"
+            },
+            "value": "5"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "06"
+            },
+            "value": "6"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "07"
+            },
+            "value": "7"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "08"
+            },
+            "value": "8"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "09"
+            },
+            "value": "9"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "10"
+            },
+            "value": "10"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "11"
+            },
+            "value": "11"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "12"
+            },
+            "value": "12"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "13"
+            },
+            "value": "13"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "14"
+            },
+            "value": "14"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "15"
+            },
+            "value": "15"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "16"
+            },
+            "value": "16"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "17"
+            },
+            "value": "17"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "18"
+            },
+            "value": "18"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "19"
+            },
+            "value": "19"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "20"
+            },
+            "value": "20"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "21"
+            },
+            "value": "21"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "22"
+            },
+            "value": "22"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "23"
+            },
+            "value": "23"
+          }
+        ]
+      },
+      "label": {
+        "type": "plain_text",
+        "text": "Часы"
+      },
+      "block_id": "timeHour"
+    },
+    {
+      "type": "input",
+      "element": {
+        "type": "static_select",
+        "placeholder": {
+          "type": "plain_text",
+          "text": "Выберите минуты"
+        },
+        "action_id": "actionTimeMinute",
+        "options": [
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "00"
+            },
+            "value": "0"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "05"
+            },
+            "value": "5"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "10"
+            },
+            "value": "10"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "15"
+            },
+            "value": "15"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "20"
+            },
+            "value": "20"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "25"
+            },
+            "value": "25"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "30"
+            },
+            "value": "30"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "35"
+            },
+            "value": "35"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "40"
+            },
+            "value": "40"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "45"
+            },
+            "value": "45"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "50"
+            },
+            "value": "50"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "55"
+            },
+            "value": "55"
+          }
+        ]
+      },
+      "label": {
+        "type": "plain_text",
+        "text": "Минуты"
+      },
+      "block_id": "timeMinute"
+    },
+    {
+      "type": "input",
+      "element": {
+        "type": "static_select",
+        "placeholder": {
+          "type": "plain_text",
+          "text": "Выберите минуты"
+        },
+        "action_id": "actionDurationMinute",
+        "options": [
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "05"
+            },
+            "value": "5"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "10"
+            },
+            "value": "10"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "15"
+            },
+            "value": "15"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "20"
+            },
+            "value": "20"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "25"
+            },
+            "value": "25"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "30"
+            },
+            "value": "30"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "35"
+            },
+            "value": "35"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "40"
+            },
+            "value": "40"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "45"
+            },
+            "value": "45"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "50"
+            },
+            "value": "50"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "55"
+            },
+            "value": "55"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "60"
+            },
+            "value": "60"
+          }
+        ]
+      },
+      "label": {
+        "type": "plain_text",
+        "text": "Продолжительность"
+      },
+      "block_id": "durationMinute"
+    },
+    {
+      "type": "input",
+      "element": {
+        "type": "static_select",
+        "placeholder": {
+          "type": "plain_text",
+          "text": "Выберите тип уведомления"
+        },
+        "action_id": "actionNotification",
+        "options": [
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "Простое сообщение"
+            },
+            "value": "simple"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "@here"
+            },
+            "value": "here"
+          },
+          {
+            "text": {
+              "type": "plain_text",
+              "text": "@channel"
+            },
+            "value": "channel"
+          }
+        ]
+      },
+      "label": {
+        "type": "plain_text",
+        "text": "Уведомление"
+      },
+      "block_id": "notification"
+    }
+  ]
+}

@@ -1,34 +1,16 @@
 const actions = require('./actions');
+const buttonMock = require('./mockJSON/actions/buttonMock.json');
+const inputMock = require('./mockJSON/actions/inputMock.json');
 
 test('button', () => {
   expect(actions.button()).toEqual({});
 
-  expect(actions.button('title', 'value', 'actionId')).toEqual({
-    type: 'button',
-    text: {
-      type: 'plain_text',
-      text: 'title',
-    },
-    value: 'value',
-    action_id: 'actionId',
-  });
+  expect(actions.button('title', 'value', 'actionId')).toEqual(buttonMock['1']);
 
-  expect(actions.button('title', 'value', 'actionId', { a: 1, b: 2 })).toEqual({
-    type: 'button',
-    text: {
-      type: 'plain_text',
-      text: 'title',
-    },
-    value: 'value',
-    action_id: 'actionId',
-    a: 1,
-    b: 2,
-  });
+  expect(actions.button('title', 'value', 'actionId', { a: 1, b: 2 })).toEqual(buttonMock['2']);
 });
 
-test('inputPlainText', () => {
-  console.log(actions);
-
+test('Input', () => {
   expect(
     new actions.Input('users_select')
       .setBlockId('user_select')
@@ -36,22 +18,7 @@ test('inputPlainText', () => {
       .setPlaceholder('Выберите пользователя')
       .setLabel('Пользователь')
       .get(),
-  ).toEqual({
-    block_id: `user_select`,
-    type: 'input',
-    element: {
-      action_id: `add_administrator_privileges:::123`,
-      type: 'users_select',
-      placeholder: {
-        type: 'plain_text',
-        text: 'Выберите пользователя',
-      },
-    },
-    label: {
-      type: 'plain_text',
-      text: 'Пользователь',
-    },
-  });
+  ).toEqual(inputMock['1']);
 
   expect(
     new actions.Input('plain_text_input')
@@ -61,23 +28,7 @@ test('inputPlainText', () => {
       .setLabel('Название')
       .Multiline()
       .get(),
-  ).toEqual({
-    type: 'input',
-    block_id: 'tagName',
-    element: {
-      multiline: true,
-      action_id: 'actionTagName',
-      placeholder: {
-        type: 'plain_text',
-        text: 'Введите название',
-      },
-      type: 'plain_text_input',
-    },
-    label: {
-      type: 'plain_text',
-      text: 'Название',
-    },
-  });
+  ).toEqual(inputMock['2']);
 
   expect(
     new actions.Input('plain_text_input')
@@ -91,37 +42,5 @@ test('inputPlainText', () => {
         { label: 'label2', value: 'value2' },
       ])
       .get(),
-  ).toEqual({
-    type: 'input',
-    block_id: 'changeWeatherCity',
-    element: {
-      min_query_length: 2,
-      placeholder: {
-        type: 'plain_text',
-        text: 'Введите название города',
-      },
-      type: 'plain_text_input',
-      action_id: 'actionChangeWeatherCity',
-      options: [
-        {
-          text: {
-            type: 'plain_text',
-            text: 'label1',
-          },
-          value: 'value1',
-        },
-        {
-          text: {
-            type: 'plain_text',
-            text: 'label2',
-          },
-          value: 'value2',
-        },
-      ],
-    },
-    label: {
-      type: 'plain_text',
-      text: 'Город',
-    },
-  });
+  ).toEqual(inputMock['3']);
 });

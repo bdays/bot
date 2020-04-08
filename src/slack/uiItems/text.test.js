@@ -3,8 +3,6 @@ const text = require('./text');
 test('markdownSection', () => {
   expect(text.markdownSection()).toEqual({});
 
-  console.log("text.markdownSection('text')", text.markdownSection('text'));
-
   expect(text.markdownSection('text')).toEqual({
     type: 'section',
     text: {

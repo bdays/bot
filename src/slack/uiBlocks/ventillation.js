@@ -154,16 +154,8 @@ for (let index = 1; index <= 12; index++) {
 }
 
 function addModal(channelId) {
-  const obj = uiItems.modal.create('Добавление проветривания', `modal-ventillation-add:${channelId}`, [
-    {
-      type: 'context',
-      elements: [
-        {
-          type: 'mrkdwn',
-          text: 'Указывайте время в GMT',
-        },
-      ],
-    },
+  return uiItems.modal.create('Добавление проветривания', `modal-ventillation-add:${channelId}`, [
+    uiItems.text.markdownContextList(['Указывайте время в GMT']),
     new uiItems.actions.Input('multi_static_select')
       .setBlockId('weekDays')
       .setPlaceholder('Выберите дни недели')
@@ -204,10 +196,6 @@ function addModal(channelId) {
       ])
       .get(),
   ]);
-
-  console.log(JSON.stringify(obj));
-
-  return obj;
 }
 
 module.exports = { addModal, successAdded, dublicateSchedule, list, typesNotification, typesWeekDays };

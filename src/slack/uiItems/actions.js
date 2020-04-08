@@ -76,13 +76,18 @@ class Input {
   }
 
   setOptions(options) {
-    this.data.element.options = (options.length ? options : []).map(({ label, value }) => ({
-      text: {
-        type: 'plain_text',
-        text: label,
-      },
-      value: value,
-    }));
+    this.data.element.options = (options.length ? options : []).map(({ label, value }) => {
+      if (!label) console.error('setOptions - not found label');
+      if (!value) console.error('setOptions - not found value');
+
+      return {
+        text: {
+          type: 'plain_text',
+          text: label,
+        },
+        value,
+      };
+    });
 
     return this;
   }
