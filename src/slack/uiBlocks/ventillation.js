@@ -163,7 +163,7 @@ for (let index = 1; index <= 12; index++) {
 
 function addModal(channelId) {
   return uiItems.modal.create('Добавление проветривания', `modal-ventillation-add:${channelId}`, [
-    uiItems.text.markdownContextList(['Указывайте время в GMT']),
+    new uiItems.text.Markdown().setContextList(['Указывайте время в GMT']).get(),
     new uiItems.actions.Input('multi_static_select')
       .setBlockId('weekDays')
       .setPlaceholder('Выберите дни недели')

@@ -22,7 +22,7 @@ function manageList(channel_id, admin_id) {
     Promise.all([db.admins.list(channel_id), db.channels.getAdminId(channel_id)]).then((values) => {
       const [admins, channelCreator] = values;
 
-      blocks.push(uiItems.text.markdownContextList([`В канале сейчас назначено (${admins.length}):`]));
+      blocks.push(new uiItems.text.Markdown().setContextList([`В канале сейчас назначено (${admins.length}):`]).get());
 
       admins.forEach((currentAdminId, i) => {
         if (currentAdminId === admin_id) {
