@@ -7,7 +7,7 @@ function change(view, channelId, userId) {
 
   if (!newWeatherCity || !new RegExp('^[a-zA-Zа-яА-Я]+$').test(newWeatherCity)) {
     api.chat.postEphemeral(channelId, userId, '', [
-      uiItems.text.markdownSection('*Ошибка поиска города, к вводу разрешены только буквы*!'),
+      new uiItems.text.Markdown().setSection('*Ошибка поиска города, к вводу разрешены только буквы*!').get(),
     ]);
     return;
   }
@@ -16,14 +16,14 @@ function change(view, channelId, userId) {
     .changeWeatherCityInChannel(channelId, newWeatherCity)
     .then((newCityName) => {
       api.chat.postEphemeral(channelId, userId, '', [
-        uiItems.text.markdownSection(`*Город ${newCityName} успешно добавлен / изменен!*`),
+        new uiItems.text.Markdown().setSection(`*Город ${newCityName} успешно добавлен / изменен!*`).get(),
       ]);
     })
     .catch((e) =>
       api.chat.postEphemeral(channelId, userId, '', [
-        uiItems.text.markdownSection(
-          `*Ошибка добавления / изменения города${e === 'not_found' ? ' ' + newWeatherCity : ''}!*`,
-        ),
+        new uiItems.text.Markdown()
+          .setSection(`*Ошибка добавления / изменения города${e === 'not_found' ? ' ' + newWeatherCity : ''}!*`)
+          .get(),
       ]),
     );
 

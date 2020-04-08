@@ -12,8 +12,8 @@ function checkAccess(channel_id, user_id) {
           db.admins.list(channel_id).then((admins) => {
             reject([
               ...uiBlocks.permission.accessDeniedBlocks(),
-              uiItems.text.markdownSection('*Обратитесь за доступом к одному из администраторов:*'),
-              uiItems.text.markdownSection(admins.map((userId) => `<@${userId}>`).join(' ')),
+              new uiItems.text.Markdown().setSection('*Обратитесь за доступом к одному из администраторов:*').get(),
+              new uiItems.text.Markdown().setSection(admins.map((userId) => `<@${userId}>`).join(' ')).get(),
             ]);
           });
         });

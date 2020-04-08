@@ -14,7 +14,7 @@ function postEphemeral(channelId, userId, text = '', blocks = [], attr = {}) {
     })
     .catch(() =>
       postMessage(userId, 'Ошибка доставки сообщения!', [
-        uiItems.text.markdownSection('*Ошибка доставки сообщения! >>>*'),
+        new uiItems.text.Markdown().setSection('*Ошибка доставки сообщения! >>>*').get(),
         ...blocks,
       ]),
     );

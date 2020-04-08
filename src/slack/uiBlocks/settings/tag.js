@@ -1,15 +1,15 @@
 const uiItems = require('../../uiItems');
 
 function successAdded(tagName) {
-  return uiItems.text.markdownSection(`*Тег _${tagName}_ был успешно добавлен*`);
+  return new uiItems.text.Markdown().setSection(`*Тег _${tagName}_ был успешно добавлен*`).get();
 }
 
 function errorAddedDuplicate(tagName) {
-  return uiItems.text.markdownSection(`*Ошибка добавления тега _${tagName}_, он уже существует!*`);
+  return new uiItems.text.Markdown().setSection(`*Ошибка добавления тега _${tagName}_, он уже существует!*`).get();
 }
 
 function errorAdded(tagName) {
-  return uiItems.text.markdownSection(`*Ошибка добавления тега _${tagName}_!*`);
+  return new uiItems.text.Markdown().setSection(`*Ошибка добавления тега _${tagName}_!*`).get();
 }
 
 /**
@@ -22,9 +22,9 @@ function addModal(channelId) {
     'Добавление нового тега',
     `modal-settings-tag-add:${channelId}`,
     [
-      uiItems.text.markdownSection(
-        '*Внимание! Удалить или изменить тег будет невозможно!* _и он будет сохранен в нижнем регистре_',
-      ),
+      new uiItems.text.Markdown()
+        .setSection('*Внимание! Удалить или изменить тег будет невозможно!* _и он будет сохранен в нижнем регистре_')
+        .get(),
       new uiItems.actions.Input('plain_text_input')
         .setBlockId('tagName')
         .setActionId('actionTagName')

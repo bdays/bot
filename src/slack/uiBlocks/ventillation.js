@@ -16,14 +16,16 @@ const typesWeekDays = {
 
 function successAdded(weekDays, hours, minutes, duration, notification) {
   return [
-    uiItems.text.markdownSection('*Проветривание успешно добавлено!*'),
-    uiItems.text.markdownSection(
-      `${weekDays} в *${hours}:${minutes}* по GMT длительность: *${duration} минут*, окончание в *${utils.time.calcDuration(
-        hours,
-        minutes,
-        duration,
-      )}* по GMT - ${notification}`,
-    ),
+    new uiItems.text.Markdown().setSection('*Проветривание успешно добавлено!*').get(),
+    new uiItems.text.Markdown()
+      .setSection(
+        `${weekDays} в *${hours}:${minutes}* по GMT длительность: *${duration} минут*, окончание в *${utils.time.calcDuration(
+          hours,
+          minutes,
+          duration,
+        )}* по GMT - ${notification}`,
+      )
+      .get(),
   ];
 }
 
@@ -44,17 +46,21 @@ function createList(records, isAdmin, channelId) {
       if (record.week_day_sunday) weekDays.push('Вс');
     }
 
-    const data = uiItems.text.markdownSection(
-      `${utils.emoji.numberToEmoji(i + 1)} ${typesNotification[record.notification_type]} в *${utils.time.timeToString(
-        record.time_hour,
-      )}:${utils.time.timeToString(record.time_minute)}* продолжительность *${utils.time.timeToString(
-        record.duration_minute,
-      )}* минут, завершение *${utils.time.calcDuration(
-        record.time_hour,
-        record.time_minute,
-        record.duration_minute,
-      )}* по GMT - ${weekDays.join(', ')}`,
-    );
+    const data = new uiItems.text.Markdown()
+      .setSection(
+        `${utils.emoji.numberToEmoji(i + 1)} ${
+          typesNotification[record.notification_type]
+        } в *${utils.time.timeToString(record.time_hour)}:${utils.time.timeToString(
+          record.time_minute,
+        )}* продолжительность *${utils.time.timeToString(
+          record.duration_minute,
+        )}* минут, завершение *${utils.time.calcDuration(
+          record.time_hour,
+          record.time_minute,
+          record.duration_minute,
+        )}* по GMT - ${weekDays.join(', ')}`,
+      )
+      .get();
 
     if (isAdmin)
       data.accessory = {
@@ -88,10 +94,10 @@ function createList(records, isAdmin, channelId) {
 }
 
 function list(channelId, user_id) {
-  const scheduleNotFound = [uiItems.text.markdownSection('*Расписание не найдено!*')];
+  const scheduleNotFound = [new uiItems.text.Markdown().setSection('*Расписание не найдено!*').get()];
 
   const scheduleList = (schedule) => {
-    return [uiItems.text.markdownSection('*Расписание проветривания:*'), ...schedule];
+    return [new uiItems.text.Markdown().setSection('*Расписание проветривания:*').get(), ...schedule];
   };
 
   return new Promise((resolve) => {
@@ -114,13 +120,15 @@ function list(channelId, user_id) {
           });
       })
       .catch(() => {
-        resolve([uiItems.text.markdownSection('*Расписание не найдено!*')]);
+        resolve([new uiItems.text.Markdown().setSection('*Расписание не найдено!*').get()]);
       });
   });
 }
 
 function dublicateSchedule() {
-  return [uiItems.text.markdownSection('*Ошибка добавления расписания!* Такое проветривание уже существует.')];
+  return [
+    new uiItems.text.Markdown().setSection('*Ошибка добавления расписания!* Такое проветривание уже существует.').get(),
+  ];
 }
 
 const days = [

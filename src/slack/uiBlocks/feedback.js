@@ -59,10 +59,12 @@ function addOrEditModal(channelId, initalValues = null) {
 
 function feedbackItem(record, count, userId, page, user, tag) {
   const newBlocks = [
-    uiItems.text.markdownSection(
-      `*${record.title}* ${record.url ? `<${record.url}|Открыть статью>` : '_URL не указан_'}`,
-    ),
-    uiItems.text.markdownSection(`${record.slackUserId ? `<@${record.slackUserId}>` : ''} ${record.message || ''}`),
+    new uiItems.text.Markdown()
+      .setSection(`*${record.title}* ${record.url ? `<${record.url}|Открыть статью>` : '_URL не указан_'}`)
+      .get(),
+    new uiItems.text.Markdown()
+      .setSection(`${record.slackUserId ? `<@${record.slackUserId}>` : ''} ${record.message || ''}`)
+      .get(),
     {
       type: 'context',
       elements: [
@@ -78,7 +80,7 @@ function feedbackItem(record, count, userId, page, user, tag) {
 
   if (userId && record.slackUserId === userId) {
     const maxPageAfterDelete = Math.ceil((count - 1) / 3) - 1;
-    newBlocks.push(uiItems.text.markdownSection('*Действия с отзывом:*'), {
+    newBlocks.push(new uiItems.text.Markdown().setSection('*Действия с отзывом:*').get(), {
       type: 'actions',
       elements: [
         uiItems.actions.button(
@@ -119,7 +121,7 @@ function getPage(page = 0, user = '', tag = '', userId = '') {
       dbApp.feedback.getPage(page, user, tag).catch(() => resolve([])),
       dbApp.feedbackTags.getNameById(tag),
     ]).then(([{ records, count }, tagName]) => {
-      const blocks = [uiItems.text.markdownSection('*Отзывы*'), uiItems.divider()];
+      const blocks = [new uiItems.text.Markdown().setSection('*Отзывы*').get(), uiItems.divider()];
 
       if (count > 0) {
         records.forEach((record) =>
@@ -144,44 +146,47 @@ function getPage(page = 0, user = '', tag = '', userId = '') {
         if (tag) text = `*Тег _${tagName}_ еще не закреплен не за одним отзывом*`;
         if (user && tag) text = `*Пользователь <@${user}> еще не оставлял отзывов c тегом _${tagName}_*`;
 
-        blocks.push(uiItems.text.markdownSection(text));
+        blocks.push(new uiItems.text.Markdown().setSection(text).get());
       }
 
       blocks.push(
-        uiItems.text.markdownSection('Выберите пользователя', {
-          accessory: {
-            type: 'users_select',
-            action_id: `userPageInFeedBack:${JSON.stringify({ page, tag })}`,
-            placeholder: {
-              type: 'plain_text',
-              text: 'Все',
+        new uiItems.text.Markdown()
+          .setSection('Выберите пользователя', {
+            accessory: {
+              type: 'users_select',
+              action_id: `userPageInFeedBack:${JSON.stringify({ page, tag })}`,
+              placeholder: {
+                type: 'plain_text',
+                text: 'Все',
+              },
             },
-          },
-        }),
-
-        uiItems.text.markdownSection('Выберите тег', {
-          block_id: 'feedbackTags',
-          accessory: {
-            type: 'external_select',
-            action_id: `tagInFeedBack:${JSON.stringify({ page, tag, user })}`,
-            placeholder: {
-              type: 'plain_text',
-              text: 'Все',
+          })
+          .get(),
+        new uiItems.text.Markdown()
+          .setSection('Выберите тег', {
+            block_id: 'feedbackTags',
+            accessory: {
+              type: 'external_select',
+              action_id: `tagInFeedBack:${JSON.stringify({ page, tag, user })}`,
+              placeholder: {
+                type: 'plain_text',
+                text: 'Все',
+              },
+              min_query_length: 1,
             },
-            min_query_length: 1,
-          },
-        }),
+          })
+          .get(),
       );
 
       if (user || tag) {
-        blocks.push(uiItems.text.markdownSection('*Установлены фильтры:*'));
+        blocks.push(new uiItems.text.Markdown().setSection('*Установлены фильтры:*').get());
 
         if (user) {
-          blocks.push(uiItems.text.markdownSection(`Выбран пользователь <@${user}>`));
+          blocks.push(new uiItems.text.Markdown().setSection(`Выбран пользователь <@${user}>`).get());
         }
 
         if (tag) {
-          blocks.push(uiItems.text.markdownSection(`Выбран тег *${tagName}*`));
+          blocks.push(new uiItems.text.Markdown().setSection(`Выбран тег *${tagName}*`).get());
         }
 
         blocks.push({
@@ -197,7 +202,7 @@ function getPage(page = 0, user = '', tag = '', userId = '') {
         const countPages = Math.ceil(count / 3);
 
         const buttons = [
-          uiItems.text.markdownSection('*Навигация:*'),
+          new uiItems.text.Markdown().setSection('*Навигация:*').get(),
           {
             type: 'actions',
             block_id: `changePageInFeedBack:`,
@@ -267,11 +272,11 @@ function getPage(page = 0, user = '', tag = '', userId = '') {
 }
 
 function successAdded() {
-  return uiItems.text.markdownSection('*Отзыв успешно добавлен!*');
+  return new uiItems.text.Markdown().setSection('*Отзыв успешно добавлен!*').get();
 }
 
 function errorAdded() {
-  return uiItems.text.markdownSection('*Ошибка добавления отзыва!*');
+  return new uiItems.text.Markdown().setSection('*Ошибка добавления отзыва!*').get();
 }
 
 module.exports = { getPage, addOrEditModal, successAdded, errorAdded };

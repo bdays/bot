@@ -1,9 +1,9 @@
 const text = require('./text');
 
 test('markdownSection', () => {
-  expect(text.markdownSection()).toEqual({});
+  expect(new text.Markdown().setSection().get()).toEqual({});
 
-  expect(text.markdownSection('text')).toEqual({
+  expect(new text.Markdown().setSection('text').get()).toEqual({
     type: 'section',
     text: {
       type: 'mrkdwn',
@@ -11,7 +11,7 @@ test('markdownSection', () => {
     },
   });
 
-  expect(text.markdownSection('text', { a: 1, b: 2 })).toEqual({
+  expect(new text.Markdown().setSection('text').setArgs({ a: 1, b: 2 }).get()).toEqual({
     type: 'section',
     text: {
       type: 'mrkdwn',
@@ -23,9 +23,9 @@ test('markdownSection', () => {
 });
 
 test('markdownContext', () => {
-  expect(text.markdownContext()).toEqual({});
+  expect(new text.Markdown().setContext().get()).toEqual({});
 
-  expect(text.markdownContext('text')).toEqual({
+  expect(new text.Markdown().setContext('text').get()).toEqual({
     type: 'context',
     text: {
       type: 'mrkdwn',
@@ -33,7 +33,7 @@ test('markdownContext', () => {
     },
   });
 
-  expect(text.markdownContext('text', { a: 1, b: 2 })).toEqual({
+  expect(new text.Markdown().setContext('text').setArgs({ a: 1, b: 2 }).get()).toEqual({
     type: 'context',
     text: {
       type: 'mrkdwn',
@@ -45,9 +45,9 @@ test('markdownContext', () => {
 });
 
 test('markdownContextList', () => {
-  expect(text.markdownContextList()).toEqual({});
+  expect(new text.Markdown().setContextList().get()).toEqual({});
 
-  expect(text.markdownContextList(['For more info,'])).toEqual({
+  expect(new text.Markdown().setContextList(['For more info,']).get()).toEqual({
     type: 'context',
     elements: [
       {
@@ -57,7 +57,7 @@ test('markdownContextList', () => {
     ],
   });
 
-  expect(text.markdownContextList(['For more info,'], { a: 1, b: 2 })).toEqual({
+  expect(new text.Markdown().setContextList(['For more info,']).setArgs({ a: 1, b: 2 }).get()).toEqual({
     type: 'context',
     elements: [
       {

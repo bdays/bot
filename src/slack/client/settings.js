@@ -55,7 +55,9 @@ function addUserAdmin(channelId, selectedUserId, adminId, webhookUrl) {
       );
 
       api.chat.postMessage(selectedUserId, '', [
-        uiItems.text.markdownSection(`<@${adminId}> выдал Вам полномочия администратора в канале <#${channelId}>`),
+        new uiItems.text.Markdown()
+          .setSection(`<@${adminId}> выдал Вам полномочия администратора в канале <#${channelId}>`)
+          .get(),
       ]);
     })
     .catch((e) => {
@@ -80,7 +82,9 @@ function removeAdmin(channelId, userId, needRemoveUserId, webhookUrl) {
       );
 
       api.chat.postMessage(needRemoveUserId, '', [
-        uiItems.text.markdownSection(`<@${userId}> снял с Вас полномочия администратора в канале <#${channelId}>`),
+        new uiItems.text.Markdown()
+          .setSection(`<@${userId}> снял с Вас полномочия администратора в канале <#${channelId}>`)
+          .get(),
       ]);
     })
     .catch(() =>

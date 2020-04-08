@@ -27,7 +27,8 @@ function changeModal(channelId) {
     db.channels
       .getWeatherCity(channelId)
       .then((weather_city) => {
-        if (weather_city) modal.blocks.unshift(uiItems.text.markdownSection(`*Текущий город:* ${weather_city}`));
+        if (weather_city)
+          modal.blocks.unshift(new uiItems.text.Markdown().setSection(`*Текущий город:* ${weather_city}`).get());
         resolve(modal);
       })
       .catch(() => resolve(modal));

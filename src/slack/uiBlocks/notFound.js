@@ -5,26 +5,26 @@ function commandNotFound(slash, command = '') {
     case 'ventillation':
       return {
         blocks: [
-          uiItems.text.markdownSection(`*Команда ${command ? `"${command}"` : ''} не найдена!*`),
-          uiItems.text.markdownSection('Доступные команды:'),
-          uiItems.text.markdownSection('*add* - добавить время'),
-          uiItems.text.markdownSection('*schedule* - получить расписание'),
+          new uiItems.text.Markdown().setSection(`*Команда ${command ? `"${command}"` : ''} не найдена!*`).get(),
+          new uiItems.text.Markdown().setSection('Доступные команды:').get(),
+          new uiItems.text.Markdown().setSection('*add* - добавить время').get(),
+          new uiItems.text.Markdown().setSection('*schedule* - получить расписание').get(),
         ],
       };
 
     case 'settings':
       return {
         blocks: [
-          uiItems.text.markdownSection(`*Команда ${command ? `"${command}"` : ''} не найдена!*`),
-          uiItems.text.markdownSection('Доступные команды:'),
-          uiItems.text.markdownSection('*weather* - добавить/изменить город погоды'),
-          uiItems.text.markdownSection('*admin* - управление администраторами'),
+          new uiItems.text.Markdown().setSection(`*Команда ${command ? `"${command}"` : ''} не найдена!*`).get(),
+          new uiItems.text.Markdown().setSection('Доступные команды:').get(),
+          new uiItems.text.Markdown().setSection('*weather* - добавить/изменить город погоды').get(),
+          new uiItems.text.Markdown().setSection('*admin* - управление администраторами').get(),
         ],
       };
 
     default:
       return {
-        blocks: [uiItems.text.markdownSection('Такой команды не существует!')],
+        blocks: [new uiItems.text.Markdown().setSection('Такой команды не существует!').get()],
       };
   }
 }

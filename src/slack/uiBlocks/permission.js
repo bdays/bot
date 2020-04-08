@@ -1,7 +1,9 @@
 const uiItems = require('../uiItems');
 
 function accessDeniedBlocks() {
-  return [uiItems.text.markdownSection(':bangbang:*Ошибка! Доступ к этому функционалу запрещен!*:lock:')];
+  return [
+    new uiItems.text.Markdown().setSection(':bangbang:*Ошибка! Доступ к этому функционалу запрещен!*:lock:').get(),
+  ];
 }
 
 module.exports = { accessDeniedBlocks };

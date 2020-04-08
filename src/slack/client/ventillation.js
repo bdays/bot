@@ -52,7 +52,9 @@ function checkScheduleAndSendMessage(currentTime) {
         const record = item.toJSON();
 
         const blocks = [
-          uiItems.text.markdownSection(`${checkNotificationType(item.notification_type)}*Проветривание!*`),
+          new uiItems.text.Markdown()
+            .setSection(`${checkNotificationType(item.notification_type)}*Проветривание!*`)
+            .get(),
         ];
 
         db.channels.getWeatherCity(record.channel_id).then((weather_city) =>
@@ -60,13 +62,15 @@ function checkScheduleAndSendMessage(currentTime) {
             blocks.push(weatherBlock);
 
             blocks.push(
-              uiItems.text.markdownSection(
-                `Продолжительность: *${record.duration_minute} минут*. Завершение *${utils.time.calcDuration(
-                  record.time_hour,
-                  record.time_minute,
-                  record.duration_minute,
-                )}* по GMT`,
-              ),
+              new uiItems.text.Markdown()
+                .setSection(
+                  `Продолжительность: *${record.duration_minute} минут*. Завершение *${utils.time.calcDuration(
+                    record.time_hour,
+                    record.time_minute,
+                    record.duration_minute,
+                  )}* по GMT`,
+                )
+                .get(),
             );
 
             api.chat.postMessage(record.channel_id, 'Проветривание!', blocks);
@@ -76,9 +80,9 @@ function checkScheduleAndSendMessage(currentTime) {
               utils.date.getCurrentDate().getTime() / 1000 + record.duration_minute * 60,
               'Проветривание завершено!',
               [
-                uiItems.text.markdownSection(
-                  `${checkNotificationType(item.notification_type)}*Проветривание завершено!*`,
-                ),
+                new uiItems.text.Markdown()
+                  .setSection(`${checkNotificationType(item.notification_type)}*Проветривание завершено!*`)
+                  .get(),
               ],
             );
           }),
