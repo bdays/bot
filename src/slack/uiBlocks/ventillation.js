@@ -141,25 +141,21 @@ const days = [
   { label: 'Вс', value: 'sunday' },
 ];
 
-const hours = [];
+const generateMock = (count, callback, startPosition = 0) => {
+  const arr = [];
+  for (let index = startPosition; index <= count; ++index) {
+    arr.push(callback(index));
+  }
+  return arr;
+};
 
-for (let index = 0; index < 24; index++) {
-  hours.push({ label: utils.time.timeToString(index), value: `${index}` });
-}
-
-const minutes = [];
-
-for (let index = 0; index < 12; index++) {
-  const time = index * 5;
-  minutes.push({ label: utils.time.timeToString(time), value: `${time}` });
-}
-
-const durationMinutes = [];
-
-for (let index = 1; index <= 12; index++) {
-  const time = index * 5;
-  durationMinutes.push({ label: utils.time.timeToString(time), value: `${time}` });
-}
+const hours = generateMock(23, (index) => ({ label: utils.time.timeToString(index), value: `${index}` }));
+const minutes = generateMock(11, (index) => ({ label: utils.time.timeToString(index * 5), value: `${index * 5}` }));
+const durationMinutes = generateMock(
+  12,
+  (index) => ({ label: utils.time.timeToString(index * 5), value: `${index * 5}` }),
+  1,
+);
 
 function addModal(channelId) {
   return uiItems.modal.create('Добавление проветривания', `modal-ventillation-add:${channelId}`, [
