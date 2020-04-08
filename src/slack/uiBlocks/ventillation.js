@@ -198,9 +198,9 @@ function addModal(channelId) {
       .setActionId('actionNotification')
       .setLabel('Уведомление')
       .setOptions([
-        { text: 'Простое сообщение', value: 'simple' },
-        { text: '@here', value: 'here' },
-        { text: '@channel', value: 'channel' },
+        { label: 'Простое сообщение', value: 'simple' },
+        { label: '@here', value: 'here' },
+        { label: '@channel', value: 'channel' },
       ])
       .get(),
   ]);
