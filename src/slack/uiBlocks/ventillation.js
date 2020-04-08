@@ -164,29 +164,20 @@ function addModal(channelId) {
         },
       ],
     },
-    {
-      type: 'input',
-      block_id: 'weekDays',
-      element: {
-        type: 'multi_static_select',
-        placeholder: {
-          type: 'plain_text',
-          text: 'Выберите дни недели',
-        },
-        action_id: 'actionWeekDays',
-        options: days.map((item) => ({
-          text: {
-            type: 'plain_text',
-            text: item.label,
-          },
-          value: item.value,
+
+    new uiItems.actions.Input('multi_static_select')
+      .setBlockId('weekDays')
+      .setPlaceholder('Выберите дни недели')
+      .setActionId('actionWeekDays')
+      .setLabel('Дни недели')
+      .setOptions(
+        days.map(({ value, label }) => ({
+          value,
+          label,
         })),
-      },
-      label: {
-        type: 'plain_text',
-        text: 'Дни недели',
-      },
-    },
+      )
+      .get(),
+
     {
       type: 'input',
       block_id: 'timeHour',

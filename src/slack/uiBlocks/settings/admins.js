@@ -66,8 +66,7 @@ function addModal(channelId, webhookUrl) {
     'Добавить администратора',
     `modal-add-administrator-privileges:${channelId}`,
     [
-      new uiItems.actions.Input()
-        .setType('users_select')
+      new uiItems.actions.Input('users_select')
         .setBlockId('user_select')
         .setActionId(`add_administrator_privileges:::${webhookUrl}`)
         .setPlaceholder('Выберите пользователя')

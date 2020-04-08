@@ -25,22 +25,12 @@ function addModal(channelId) {
       uiItems.text.markdownSection(
         '*Внимание! Удалить или изменить тег будет невозможно!* _и он будет сохранен в нижнем регистре_',
       ),
-      {
-        type: 'input',
-        block_id: 'tagName',
-        element: {
-          action_id: 'actionTagName',
-          placeholder: {
-            type: 'plain_text',
-            text: 'Введите название',
-          },
-          type: 'plain_text_input',
-        },
-        label: {
-          type: 'plain_text',
-          text: 'Название',
-        },
-      },
+      new uiItems.actions.Input('plain_text_input')
+        .setBlockId('tagName')
+        .setActionId('actionTagName')
+        .setPlaceholder('Введите название')
+        .setLabel('Название')
+        .get(),
     ],
     {},
     'Добавить',

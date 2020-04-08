@@ -13,22 +13,12 @@ function changeModal(channelId) {
       'Изменение города погоды',
       `modal-settings-weather-change:${channelId}`,
       [
-        {
-          type: 'input',
-          block_id: 'changeWeatherCity',
-          element: {
-            placeholder: {
-              type: 'plain_text',
-              text: 'Введите название города',
-            },
-            type: 'plain_text_input',
-            action_id: 'actionChangeWeatherCity',
-          },
-          label: {
-            type: 'plain_text',
-            text: 'Город',
-          },
-        },
+        new uiItems.actions.Input('plain_text_input')
+          .setBlockId('changeWeatherCity')
+          .setActionId('actionChangeWeatherCity')
+          .setPlaceholder('Введите название города')
+          .setLabel('Город')
+          .get(),
       ],
       {},
       'Добавить / Изменить',

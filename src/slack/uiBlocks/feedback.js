@@ -8,72 +8,33 @@ function addOrEditModal(channelId, initalValues = null) {
       `${initalValues ? 'Редактирование' : 'Добавление'} отзыва`,
       `modal-feedback-${initalValues ? 'edit' : 'add'}:${channelId}`,
       [
-        {
-          type: 'input',
-          block_id: 'feedbackTitle',
-          element: {
-            action_id: 'actionFeedbackTitle',
-            type: 'plain_text_input',
-            placeholder: {
-              type: 'plain_text',
-              text: 'Введите название',
-            },
-          },
-          label: {
-            type: 'plain_text',
-            text: 'Название',
-          },
-        },
-        {
-          type: 'input',
-          block_id: 'feedbackURL',
-          element: {
-            action_id: 'actionFeedbackURL',
-            type: 'plain_text_input',
-            placeholder: {
-              type: 'plain_text',
-              text: 'Введите URL статьи / видео',
-            },
-          },
-          label: {
-            type: 'plain_text',
-            text: 'URL',
-          },
-        },
-        {
-          type: 'input',
-          block_id: 'feedbackReview',
-          element: {
-            action_id: 'actionFeedbackReview',
-            type: 'plain_text_input',
-            multiline: true,
-            placeholder: {
-              type: 'plain_text',
-              text: 'Напишите отзыв',
-            },
-          },
-          label: {
-            type: 'plain_text',
-            text: 'Отзыв',
-          },
-        },
-        {
-          type: 'input',
-          block_id: 'feedbackTags',
-          element: {
-            action_id: 'actionFeedbackTags',
-            type: 'multi_external_select',
-            placeholder: {
-              type: 'plain_text',
-              text: 'Выберите теги (начните ввод)',
-            },
-            min_query_length: 1,
-          },
-          label: {
-            type: 'plain_text',
-            text: 'Теги',
-          },
-        },
+        new uiItems.actions.Input('plain_text_input')
+          .setBlockId('feedbackTitle')
+          .setActionId('actionFeedbackTitle')
+          .setPlaceholder('Введите название')
+          .setLabel('Название')
+          .get(),
+        new uiItems.actions.Input('plain_text_input')
+          .setBlockId('feedbackURL')
+          .setActionId('actionFeedbackURL')
+          .setPlaceholder('Введите URL статьи / видео')
+          .setLabel('URL')
+          .get(),
+        new uiItems.actions.Input('plain_text_input')
+          .setBlockId('feedbackReview')
+          .setActionId('actionFeedbackReview')
+          .setPlaceholder('Напишите отзыв')
+          .setLabel('Отзыв')
+          .Multiline()
+          .get(),
+        new uiItems.actions.Input('multi_external_select')
+          .setBlockId('feedbackTags')
+          .setActionId('actionFeedbackTags')
+          .setPlaceholder('Выберите теги (начните ввод)')
+          .setLabel('Теги')
+          .setMinQueryLength(1)
+          .Multiline()
+          .get(),
       ],
       {},
       initalValues ? 'Изменить' : 'Добавить',
