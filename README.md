@@ -1,7 +1,7 @@
 
 ![logo]
 
-Документация к system API /docs/redoc-static.html
+Документация к system API `http://domain/docs`
 
 # DOCKER
 

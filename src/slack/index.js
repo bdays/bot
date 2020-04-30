@@ -24,6 +24,8 @@ function startServer() {
     }
   });
 
+  app.use('/docs', express.static(`${__dirname}/docs/redoc-static.html`));
+
   app.use('/slack/slash/ventillation', routes.slash.ventillation);
   app.use('/slack/slash/settings', routes.slash.settings);
   app.use('/slack/slash/call', routes.slash.call);
