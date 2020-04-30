@@ -15,6 +15,8 @@ function startServer() {
 
   app.use('/system', routes.system);
 
+  app.use('/docs', express.static(`${__dirname}/docs/redoc-static.html`));
+
   app.use(function (req, res, next) {
     if (req.query.secret && req.query.secret === env.getSlackEventServerSecret()) {
       next();
@@ -23,8 +25,6 @@ function startServer() {
       res.end('Access Denied');
     }
   });
-
-  app.use('/docs', express.static(`${__dirname}/docs/redoc-static.html`));
 
   app.use('/slack/slash/ventillation', routes.slash.ventillation);
   app.use('/slack/slash/settings', routes.slash.settings);
